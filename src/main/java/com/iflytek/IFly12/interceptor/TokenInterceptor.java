@@ -17,7 +17,6 @@ public class TokenInterceptor implements HandlerInterceptor {
         //跨域请求会首先发一个option请求，直接返回正常状态并通过拦截器
         if(request.getMethod().equals("OPTIONS")){
             response.setStatus(HttpServletResponse.SC_OK);
-            System.out.println("通过拦截器");
             return true;
         }
         response.setCharacterEncoding("utf-8");
@@ -25,13 +24,11 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (token!=null){
             boolean result= TokenUtils.verify(token);
             if (result){
-                System.out.println("通过拦截器");
                 return true;
             }
         }
         response.setContentType("application/json; charset=utf-8");
         response.getWriter().append(new Gson().toJson(ResponseVo.errorByMsg(CodeMsg.INVALID_SIGNATURE)));
-        System.out.println("未通过拦截器");
         return false;
     }
 }

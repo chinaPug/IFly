@@ -1,13 +1,15 @@
 package com.iflytek.IFly12.bean;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
-
+@ApiModel("请求封装类")
 @Getter
 public class ResponseVo<T> {
-
+    @ApiModelProperty("信息码")
     private Integer code;
-
+    @ApiModelProperty("信息")
     private String msg;
 
     private ResponseVo() {

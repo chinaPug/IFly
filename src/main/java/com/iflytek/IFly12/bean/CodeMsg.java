@@ -1,10 +1,14 @@
 package com.iflytek.IFly12.bean;
 
-public class CodeMsg {
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-	private Integer code;//错误码
-	
-	private String msg;//错误信息
+@ApiModel("状态码")
+public class CodeMsg {
+	@ApiModelProperty("信息码")
+	private Integer code;
+	@ApiModelProperty("信息")
+	private String msg;
 
 	private CodeMsg(Integer code,String msg){
 		this.code = code;
@@ -54,9 +58,10 @@ public class CodeMsg {
 	public static CodeMsg SYSTEM_ERROR = new CodeMsg(-12, "系统出现了错误，请联系管理员！");
 	
 	//用户操作错误
-	public static CodeMsg COMPANY_NOT_FOUND = new CodeMsg(-1000, "未收录该企业信息！");
-	public static CodeMsg COMPANY_NO_JOB = new CodeMsg(-1000, "该企业未存在岗位！");
-
+	public static CodeMsg USER_NOT_FOUND = new CodeMsg(-1000, "·！");
+	public static CodeMsg PASSWORD_ERROR = new CodeMsg(-1001, "密码错误！");
+	public static CodeMsg USER_NAME_REPEAT = new CodeMsg(-1002, "用户名已被占用！");
+	public static CodeMsg PASSWORD_REPEAT_ERROR = new CodeMsg(-1003, "密码重复输入错误！");
 	//JWT操作错误
 	public static CodeMsg  INVALID_SIGNATURE= new CodeMsg(-2000, "无效签名！");
 	public static CodeMsg  TOKEN_EXPIRES= new CodeMsg(-2001, "token过期！");

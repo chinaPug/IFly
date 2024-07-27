@@ -7,14 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@ApiModel("用户")
+@ApiModel("对话")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    @ApiModelProperty("用户id")
-    private Integer userId;
-    @ApiModelProperty("用户名")
-    private String userName;
-    @ApiModelProperty("用户密码")
-    private String password;
+public class Dialogue {
+    @ApiModelProperty("问题")
+    private String question;
+    @ApiModelProperty("回答")
+    private String ask;
 }
