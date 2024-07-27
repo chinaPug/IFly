@@ -1,0 +1,9 @@
+spring:
+  application:
+    name:
+      IFly12
+xfyun:
+  APPID:
+  APISECRET:
+  APIKEY:
+  
