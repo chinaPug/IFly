@@ -68,5 +68,6 @@ public class CodeMsg {
 	public static CodeMsg  INCONSISTENT_ALGORITHMS= new CodeMsg(-2002, "token算法不一致！");
 	public static CodeMsg  INVALID_TOKEN= new CodeMsg(-2003, "token无效！");
 
-	//
+	//星火模型api
+	public static CodeMsg PIC_ERROR=new CodeMsg(-3000,"图片生成失败");
 }

@@ -25,12 +25,14 @@ public class Session {
     private List<Dialogue> dialogues;
     @ApiModelProperty("对话列表Json")
     private String dialoguesJson;
-    public static Gson gson = new Gson();
-    public String listToJson(List<Dialogue> dialogues) {
+
+    public static final Gson gson = new Gson();
+    public static String listToJson(List<Dialogue> dialogues) {
         return gson.toJson(dialogues);
     }
-    public List<Dialogue> jsonToList(String dialoguesJson) {
+    public static List<Dialogue> jsonToList(String dialoguesJson) {
         Type dialogueListType = new TypeToken<List<Dialogue>>(){}.getType();
         return gson.fromJson(dialoguesJson, dialogueListType);
     }
+
 }

@@ -20,23 +20,20 @@ import java.util.List;
 public class SessionController {
     @Autowired
     private SessionService sessionService;
-    @Autowired
-    private DialogueService dialogueService;
-    @ApiOperation(value = "根据用户id获取会话列表")
+
+    @ApiOperation(value = "根据用户id获取会话Id列表")
     @GetMapping()
-    public ResponseVo<List<Session>> getSessionList(HttpServletRequest request) {
+    public ResponseVo<List<Integer>> getSessionList(HttpServletRequest request) {
         Integer userId = (Integer) request.getSession().getAttribute("userId");
-        return ResponseVo.success(sessionService.getSessionListByUserId(userId));
+        return ResponseVo.success(sessionService.getSessionIdByUserId(userId));
     }
 
     @ApiOperation(value = "根据会话id获取历史对话")
-    @GetMapping()
+    @GetMapping("/dialogues")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "userName", value = "用户名", dataTypeClass = String.class),
-            @ApiImplicitParam(name = "password", value = "密码", dataTypeClass = String.class),
-            @ApiImplicitParam(name = "repeatPassword", value = "重复密码", dataTypeClass = String.class)
+            @ApiImplicitParam(name = "sessionId", value = "会话Id", dataTypeClass = Integer.class),
     })
     public ResponseVo<List<Dialogue>> getHistoryDialoguesBySessionId(@RequestParam(value = "sessionId") Integer sessionId) {
-        return ResponseVo.success(dialogueService.getHistoryDialoguesBySessionId(sessionId));
+        return ResponseVo.success(sessionService.getDialoguesBySessionId(sessionId));
     }
 }
